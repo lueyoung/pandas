@@ -13,12 +13,15 @@ restart: rm mk mv docker
 docker: build run
 all: build push deploy
 
-.PHONY: build push restart docker all rm run clean stop enter test
+.PHONY: build push restart docker all rm run clean stop enter test pull
 
 build:
 	@docker $@ -t ${IMAGE} -f Dockerfile .
 
 push:
+	@docker $@ ${IMAGE}
+
+pull:
 	@docker $@ ${IMAGE}
 
 run:
